@@ -70,6 +70,19 @@ ORDER BY 2 DESC
 LIMIT 5;
 
 
+/*Ques.7 The total number of posts*/
+
+SELECT 
+    SUM(user_posts.total_posts_per_user) AS 'Total Posts by Users'
+FROM
+    (SELECT 
+        users.username, COUNT(photos.image_url) AS total_posts_per_user
+    FROM
+        ig_clone.users 
+    JOIN ig_clone.photos  ON users.id = photos.user_id
+    GROUP BY users.id) AS user_posts;
+
+
 
 
 
