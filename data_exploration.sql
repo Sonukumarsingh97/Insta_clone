@@ -38,3 +38,20 @@ LEFT JOIN ig_clone.photos
 WHERE photos.id IS NULL;
 
 
+/*Ques.5 The most likes on a single photo*/
+
+SELECT 
+    username,
+    photos.id,
+    photos.image_url, 
+    COUNT(*) AS total
+FROM ig_clone.photos
+INNER JOIN ig_clone.likes
+    ON likes.photo_id = photos.id
+INNER JOIN ig_clone.users
+    ON photos.user_id = users.id
+GROUP BY photos.id
+ORDER BY total DESC
+LIMIT 1;
+
+
