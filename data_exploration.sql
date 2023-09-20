@@ -84,6 +84,46 @@ FROM
 
 
 
+/*Ques.8 The total number of users with posts*/
+
+
+SELECT 
+    COUNT(DISTINCT (users.id)) AS total_number_of_users_with_posts
+FROM
+    ig_clone.users 
+        JOIN
+    ig_clone.photos  ON users.id = photos.user_id;
+
+
+/*Ques.9 The most popular tag names by usage*/
+
+SELECT 
+    tags.tag_name, COUNT(tag_name) AS seen_used
+FROM
+    ig_clone.tags 
+        JOIN
+    ig_clone.photo_tags  ON tags.id = photo_tags.tag_id
+GROUP BY tags.id
+ORDER BY seen_used DESC
+LIMIT 10;
+
+
+
+/*Ques.10 The most popular tag names by likes*/
+
+SELECT 
+    tags.tag_name AS 'Tag Name',
+    COUNT(likes.photo_id) AS 'Number of Likes'
+FROM
+    ig_clone.photo_tags 
+        JOIN
+    ig_clone.likes  ON likes.photo_id = photo_tags.photo_id
+        JOIN
+    ig_clone.tags  ON photo_tags.tag_id = tags.id
+GROUP BY 1
+ORDER BY 2 DESC
+LIMIT 10;
+
 
 
 
