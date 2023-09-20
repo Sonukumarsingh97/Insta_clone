@@ -55,3 +55,25 @@ ORDER BY total DESC
 LIMIT 1;
 
 
+
+/*Ques.6 The number of photos posted by most active users*/
+
+SELECT 
+	users.username AS 'Username',
+    COUNT(photos.image_url) AS 'Number of Posts'
+FROM
+    ig_clone.users 
+        JOIN
+    ig_clone.photos  ON users.id = photos.user_id
+GROUP BY users.id
+ORDER BY 2 DESC
+LIMIT 5;
+
+
+
+
+
+
+
+
+
