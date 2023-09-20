@@ -125,6 +125,21 @@ ORDER BY 2 DESC
 LIMIT 10;
 
 
+/*Ques.11 The users who have liked every single photo on the site*/
+
+SELECT 
+    users.id, users.username, COUNT(likes.user_id) AS total_likes_by_user
+FROM
+    ig_clone.users 
+        JOIN
+    ig_clone.likes  ON users.id = likes.user_id
+GROUP BY users.id
+HAVING total_likes_by_user = (SELECT 
+        COUNT(*)
+    FROM
+        ig_clone.photos);
+
+
 
 
 
