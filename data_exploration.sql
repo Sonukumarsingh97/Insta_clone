@@ -13,17 +13,19 @@ FROM
 ORDER BY created_at asc
 limit 10;
 
+
   /*Ques.2 Total number of users*/
 
   SELECT count(*) as users
    from ig_clone.users ;
    
+
    /* Ques.3 most popular day of week for ragistration */
 
    select DAYNAME(created_at) as day,
     COUNT(id) as total
     from ig_clone.users
-   GROUP BY DAYNAME(created_at)
+   GROUP BY day
    ORDER BY total desc;
 
 
