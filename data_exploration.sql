@@ -16,6 +16,6 @@ limit 10;
   /*Ques.2 Total number of users*/
 
   SELECT count(*) as users
-   from ig_clone.users; 
+   from ig_clone.users ; 
 
 
