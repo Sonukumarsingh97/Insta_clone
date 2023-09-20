@@ -141,6 +141,18 @@ HAVING total_likes_by_user = (SELECT
 
 
 
+/*Ques.12 Total number of users without comments*/
+
+SELECT 
+    COUNT(*) AS total_number_of_users_without_comments
+FROM
+    (SELECT 
+        users.username, comments.comment_text
+    FROM
+        ig_clone.users 
+    LEFT JOIN ig_clone.comments  ON users.id = comments.user_id
+    GROUP BY users.id , comments.comment_text
+    HAVING comment_text IS NULL) AS users;
 
 
 
