@@ -10,4 +10,5 @@ SELECT
     *
 FROM
     ig_clone.users
-ORDER BY created_at asc;
+ORDER BY created_at asc
+limit 10;
