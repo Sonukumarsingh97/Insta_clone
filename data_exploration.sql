@@ -12,3 +12,10 @@ FROM
     ig_clone.users
 ORDER BY created_at asc
 limit 10;
+
+  /*Ques.2 Total number of users*/
+
+  SELECT count(*) as users
+   from ig_clone.users; 
+
+
